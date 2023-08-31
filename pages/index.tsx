@@ -2,7 +2,7 @@ import Image from 'next/image'
 import {Inter} from 'next/font/google'
 import {inspect} from "@xstate/inspect";
 import {useMachine} from "@xstate/react";
-import {todoAppMachine} from "@/machines/todoAppMachine";
+import {todosMachine} from "@/machines/todosMachine";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -15,21 +15,31 @@ if (typeof window !== 'undefined') {
 }
 
 export default function Home() {
-    const [state, send] = useMachine(todoAppMachine, {
-        devTools: true
+    const [state, send] = useMachine(todosMachine, {
+        devTools: true,
+        services: {
+            loadTodos: async () => {
+                throw new Error("err");
+                // return ['Take bin', 'Do laundry', 22]
+            }
+        }
     });
     return (
         <>
             <main>{JSON.stringify(state.value)}</main>
-            <button onClick={() => {send({
+            <button
+                onClick={() => {send({
                 type: "Todos Loaded",
                 todos: ['Take bin out']
             })}
             }>TODOs Loaded</button>
-            <button onClick={() => {send({
+            <button
+                onClick={() => {send({
                 type: "Todos Failed to Load",
                 errorMessage: 'Oh No!'
-            })}}>TODOs Failed to Load</button>
+            })}}>
+                TODOs Failed to Load
+            </button>
         </>
     )
 }
