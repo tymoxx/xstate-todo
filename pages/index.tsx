@@ -27,7 +27,30 @@ export default function Home() {
         <>
             <pre>{JSON.stringify(state.value)}</pre>
             <pre>{JSON.stringify(state.context)}</pre>
+            <div>
+                {
+                    state.matches('Loaded!')
+                    && (
+                        <button onClick={() => send({type: 'Create New'})}>
+                            Create
+                        </button>
+                    )
+                }
+                {
+                    state.matches('Creating new todo.Showing form input')
+                    && <input
+                    type="text"
+                    onChange={e => {
+                        send({
+                            type: "Form input changed",
+                            value: e.target.value,
+                        })
+                    }}
+                  >
 
+                  </input>
+                }
+            </div>
         </>
     )
 }
