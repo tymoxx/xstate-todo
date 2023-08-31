@@ -13,13 +13,18 @@ if (typeof window !== 'undefined') {
     });
 }
 
+const todos = new Set<string>(['Take bin', 'Do laundry'])
+
 export default function Home() {
     const [state, send] = useMachine(todosMachine, {
         devTools: true,
         services: {
             loadTodos: async () => {
                 // throw new Error("Oh no");
-                return ['Take bin', 'Do laundry', 22]
+                return Array.from(todos)
+            },
+            saveTodo: async (context, event) => {
+                todos.add(context.createNewTodoFormInput);
             }
         }
     });
@@ -38,17 +43,23 @@ export default function Home() {
                 }
                 {
                     state.matches('Creating new todo.Showing form input')
-                    && <input
-                    type="text"
-                    onChange={e => {
-                        send({
-                            type: "Form input changed",
-                            value: e.target.value,
-                        })
-                    }}
-                  >
+                    &&
+                  <form onSubmit={e => {
+                      e.preventDefault();
+                      send({type: 'Submit'})
+                  }}>
 
-                  </input>
+                    <input
+                      type="text"
+                      onChange={e => {
+                          send({
+                              type: "Form input changed",
+                              value: e.target.value,
+                          })
+                      }}
+                    >
+                    </input>
+                  </form>
                 }
             </div>
         </>
