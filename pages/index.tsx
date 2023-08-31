@@ -19,27 +19,16 @@ export default function Home() {
         devTools: true,
         services: {
             loadTodos: async () => {
-                throw new Error("err");
-                // return ['Take bin', 'Do laundry', 22]
+                // throw new Error("Oh no");
+                return ['Take bin', 'Do laundry', 22]
             }
         }
     });
     return (
         <>
-            <main>{JSON.stringify(state.value)}</main>
-            <button
-                onClick={() => {send({
-                type: "Todos Loaded",
-                todos: ['Take bin out']
-            })}
-            }>TODOs Loaded</button>
-            <button
-                onClick={() => {send({
-                type: "Todos Failed to Load",
-                errorMessage: 'Oh No!'
-            })}}>
-                TODOs Failed to Load
-            </button>
+            <pre>{JSON.stringify(state.value)}</pre>
+            <pre>{JSON.stringify(state.context)}</pre>
+
         </>
     )
 }

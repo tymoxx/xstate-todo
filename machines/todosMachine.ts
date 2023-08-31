@@ -1,29 +1,32 @@
-import {createMachine} from "xstate";
+import {createMachine, assign} from "xstate";
 
 export const todosMachine = createMachine({
-        id: "Todo Machine",
-        initial: "Todos Loading---",
         schema: {
-            // events: {} as
-            //     | { type: "Todos Loaded"; todos: string[] }
-            //     | { type: "Todos Failed to Load"; errorMessage: string },
             services: {} as {
                 'loadTodos': {
                     data: string[]
                 }
             }
         },
+        context: {
+            todos: [] as string[],
+            errorMessage: undefined as string | undefined
+        },
+        id: "Todo Machine",
+        initial: "Todos Loading---",
         states: {
             "Todos Loading---": {
                 invoke: {
                     src: "loadTodos",
                     onDone: [
                         {
-                            target: "Loaded!"
+                            actions: "assignTodosToContext",
+                            target: "Loaded!",
                         }
                     ],
                     onError: [
                         {
+                            actions: "assignErrorToContext",
                             target: "Todos Failed to Load"
                         }
                     ]
@@ -33,5 +36,19 @@ export const todosMachine = createMachine({
             "Todos Failed to Load": {},
         },
     },
+    {
+        actions: {
+            assignTodosToContext: assign((context, event) => {
+                return {
+                    todos: event.data,
+                }
+            }),
+            assignErrorToContext: assign((context, event) => {
+                return {
+                    errorMessage: (event.data as Error).message,
+                }
+            })
+        }
+    }
 )
 
