@@ -1,7 +1,7 @@
 import {createMachine, assign} from "xstate";
 
 export const todosMachine = createMachine({
-        /** @xstate-layout N4IgpgJg5mDOIC5QBUD2FUAICyBDAxgBYCWAdmAHRoayYAyquEZUAtOwMQbkVkBuqANaVqWPETIj0qWgyYt2rBP1T5cAF2KpSAbQAMAXX0HEoAA4zim7aZAAPRAE4KjgGx7HAFgCsngIwAzADsnp4BABwBADQgAJ6IAQF+FN6OAEz+QY5+aUFJrgC+BTGiOAQkPKKyjMykbJxgAE6NqI0UZgA2GgBmrQC2VNJlEpXS1fJ1isqkAmrWuobGthawVlqktg4IaekUfno5nrlh++HeQTHxCPueFK4Zjo7haX77+y9FJUPiFZRyEJAAIQcADCjTAGjAmAAcmAAO5LJAgFZrGxIrZ+VzOVxBPzhcKBI5pVw+S5OAJ6CiePSuALE86vameT4gUo-SQUf5AjgAETAHTA6jAiPMlnmm0Q5woaT0SRpcreOTJ1z0NIoek8kTpOw8bnCLLZ5Q5YIhmjqmHIcMw6mkFAAyoRUHCWJheo0+pgyGYAK7qDgAMX6ntIPvUmCIuDqkBFyLF6wlCACWIoQTOnhJ3iTrkCys8QW8d2est8aXOeQCBu+Rp4Jo0Lst1ttDqdLrdHq9vo4du9ACM+lYYyjxejEO5wilHnTXJmfI9wsrs0EKGdvHpvPjwriCd5Kxhhr8KLWzVALfDGxh7bg+C6bRguNpKCphIM9+ya+C6+aG7fUJfr+af2mWY620YxBzjNFQC2LE0hcVJ803ddfE1BcpT8ddAj8UJZXSRxdzEatKCPeszx-P8b2kDgmhaNpOh6foXwIkYiI-Y9TytMi7SvCiMCA1QQIWIxDGWCCNhHBBp0pNI0mCDUaTnaI4gSV4UjxJ5iRlPVmWKVkq2Yig+QFNif3vHgnykV9CIM-lBR41A+LmdYwOEpEh3jcTWCwyksJ2JJNL8Rw1zSZUbgLXIdjLLzEh3HTDX0wzbIAyjqNadounUNtGP3DkEuM6QHIE5yTFc0SE08nwUk8LwvDzPMxxC6Tx0SRxov8Rxzk1fDsp4XKXVKABRZpWkgDg7FgdRIQoXBuiFRoAAp9lVABKDg4oPXrzQGobwQgcDVmHKDEFYXIl3CYtpO8ek9HzbwQr8XFlw6rxMwedcurfSgNpPLaaJGu0zDASBMG9Mw9tRMTDoQVhmqpAIfHupMsO8bMQo8Jc8R8OHMzh2U0iKHTSHQOBbDWyQRP29zIdYMIpJa8J7jOrM11upTrluM50KyIIQiw+mNXeqyqnoGoFHYcnwYTI5UdggJvHQ54fPzdqBf0rkIEBcWDvsSULlZlrKUC2l6VxLztK+Sz9KF-1cGIAUIEbYWmE1yntYQXxkgUp5s1pNw-AagsOfOVIsTXRcVYPYiv1I6Rncg126WSVNfAzLMc1Z6TbgOcIniw6ksWCcPjVYkiOKbR1nXNNtg1DWOIfjzcUjl15Ug8PQHmVRJYJCbxkdlLIDjCQpYr0iPi6j0uLy4-8Tx-WuE03Jc5ckunJz91nUluWXV03SJ11cbPC56my8owOePPQgI7iQsJNW5jwe7u67l2w9NznkoIh-Npj1uPvqhkG36EAz5UwiLBXy9M0iM1cO4B+rNAi5BSASGUWRApeGnPjAoQA */
+        /** @xstate-layout N4IgpgJg5mDOIC5QBUD2FUAICyBDAxgBYCWAdmAHRoayYAyquEZUAtOwMQbkVkBuqANaVqWPETIj0qWgyYt2rBP1T5cAF2KpSAbQAMAXX0HEoAA4zim7aZAAPRAE4KjgGx7HAFgCsngIwAzADsnp4BABwBADQgAJ6IAQF+FN6OAEz+QY5+aUFJrgC+BTGiOAQkPKKyjMykbJxgAE6NqI0UZgA2GgBmrQC2VNJlEpXS1fJ1isqkAmrWuobGthawVlqktg4IaekUfno5nrlh++HeQTHxCPueFK4Zjo7haX77+y9FJUPiFZRyEJAAIQcADCjTAGjAmAAcmAAO5LJAgFZrGxIrZ+bIUMJBPQ+DLhSIhbyXRBBPLYtJpVz+V5+cJPIKfEClH6SCj-IEcAAiYA6YHUYER5ks802iHOFDSeiSelcsreOVJ1z0cooeMiASpjg8bnCzNZ5XZYIhmjqmHIcMw6mkFAAyoRUHCWJheo0+pgyGYAK7qDgAMX6ntIPvUmCIuDqkGFyNF63FCACrmcQTOnhp3iTrkCys8QW8d2eMt8aXOeQCBu+Rp4Jo0Lst1ttDqdLrdHq9vo4du9ACM+lYYyixejEO5wilHlrXJmfI9wsrs0EKGdvHpvITwkF6X5vJWMMNfhRa2aoBb4Y2MPbcHwXTaMFxtJQVMJBvu2TXwXXzQ276grzfzV-aZZjrbRjEHOM0VALZkzSFxUnzTd118Tx5ziUdJR3cJAj8UIZXSRw9zEatKGPetz1-f9b2kDgmhaNpOh6fpX2IkZSM-E8zytSi7WvaiMGA1RQIWIxDGWSCNhHBBpz0KU0mCPE5TnaJ0MTV4UnpJ5qWlPVPCIg92V5flON-B8eGfKQ3xIigjIFfjUEEuZ1nAsSkSHeMpNYXDZNwnYkh0zE1zSZUbgLXIdjLbzEl3YoWSrNibL5OzAJoujWnaLp1DbFiDJ4WyTOkRzhJckw3IkhMvJ8FJPC8Lw8zzMcQqpcdEkcaL-Ecc5UP099KHyl1SgAUWaVpIC7MwwEgTBvTMCDVmHaDEFYVrsQCHw-DybMfGzEKPCXekfDWzM1plNIeus-rzSGkbwQgDg7FgdRIQoXBukFRoAAp9lVABKDhDQSy7T2u+jo1ckV5o8xaEFYXIl3CYsqW8alV3zElVNeLdly6rxMweddzoSqp6BqBROG4J8ZiESzWMPYn-jJpQVCcsDFj8UqIdRSToecNwPB8fxglCCIVKudM4N8bxkc3RIAlSPwili0h0DgWwAd+cTIag+wlrCWS-PCe4EazNd0auXDsaw3DsK8Ut00JumxhJiZ6lYTWuYTI5drguWsJeI5806h32U5CBAXdhade2NVs1cXF5J3aXlTTZcdwiVw4869cmVi9X2WJ-1cGIfkIEbZ2IAjqGo98ZJlKeWOAjcPwmoLM4d0D5M10XYOP1NcjuOkSvta2LVklTXwMyzHNVKpW4DgZRxcTx6V6R79i++-Cim0dZ1zTbYNQyH7mo4iJcpbpVIPD0B5lUSODiW8dxgh1XCkzXo8OP7i8-14gDT1-I+CZNxnz8DJNqC8kjKlSLcOWq5NyRHXK4Bk78gbf0AZ5NOdxkJhFQuSDwUsQr7HhnhdM5wlJBEKLneKh5UEg1GhXMqWtj5bGWs8KU4CjYygzqbEKWoz7YWlFkHUXhpyKwKEAA */
         schema: {
             services: {} as {
                 'loadTodos': {
@@ -43,7 +43,9 @@ export const todosMachine = createMachine({
                         {
                             actions: "assignTodosToContext",
                             target: "Loaded!",
-                        }
+                            cond: "Has todos"
+                        },
+                        "Creating new todo"
                     ],
                     onError: [
                         {
@@ -119,6 +121,11 @@ export const todosMachine = createMachine({
         },
     },
     {
+        guards: {
+            "Has todos": (context, event) => {
+                return event.data.length > 0;
+            }
+        },
         actions: {
             assignTodosToContext: assign((context, event) => {
                 return {

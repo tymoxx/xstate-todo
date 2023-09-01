@@ -27,8 +27,8 @@ export default function Home() {
                 todos.add(context.createNewTodoFormInput);
             },
             deleteTodo: async (context, event) => {
-                throw new Error('Todo ERROR')
-                // todos.delete(event.todo)
+                // throw new Error('Todo ERROR')
+                todos.delete(event.todo)
             }
         }
     });
