@@ -1,7 +1,7 @@
 import {createMachine, assign} from "xstate";
 
 export const todosMachine = createMachine({
-        /** @xstate-layout N4IgpgJg5mDOIC5QBUD2FUAICyBDAxgBYCWAdmAHRoayYAyquEZUAtOwMQbkVkBuqANaVqWPETIj0qWgyYt2rBP1T5cAF2KpSAbQAMAXX0HEoAA4zim7aZAAPRKwDMADgoA2dwBYAnAEYvAFYAJgB2cND3FwAaEABPR2C9Hwowlydgl3dgwL9AvXSAX0LY0RwCEh5RWUZmUjZOMAAnJtQmijMAGw0AMzaAWyppcokq6Rr5esVlUgE1a11DY1sLWCstUlsHBFY-dz0KL3c8nxDIp2S-UNiEhGDjij8fF1C9IL0nbOCc4tLh8UqlDkEEgAEIOABhJpgDRgTAAOTAAHdlkgQKt1jY0dsvF4DnsLpFQn4Cp9gjdHH4XhQXHorp4-Dk8qTfiAygDJBQoTDNPVMOQkZh1NIKABlQioJEsTB9Jr9TBkMwAV3UHAAYgMFaRlepMERcPVIKjzJYFltEE4MocvC4Qm8AkdPO4KQgnIFAo9gj4fGEfa4fiU2f8KpzuRppQKhSLxZLpbL5YqVRxRUqAEb9KzG9GmjbmhC5LwUHxOK6BJy49yBUI+Z3xRABFJUwLevRl8tul6s9khnhh3lQfnIqMYMW4PjS4UYLjaSgqYRDDAjQFc6HhvmRyeoUfjvmbmZzcPaYxZjFm7GIMvuVIFVtnHLuVwu1hBGnN5KhW0fIIBv6Ljm91d+0HQVN23CdpA4ZpWnaLpegGBcxB7Sg+wjIdQNFMdwIwfdVEPRYjEMFYcyxUBtlyYJDiyC59gbbwYjrO4ogoN0kkCKj3GJfxikDUh0DgWxu1GMAiLWM9SMSElHiibIXDxN5cUyJ8vSvcJ0jCVsnFCVwri7YMhIQiY6gaVgRMxTZzx2PI3GSXE9A-UIbQuYIvBdPwnA8K4jgcrw3PCVx3F0v8kIoYEwVMsT7EQHJrKrctjjxX08ifKlQhpOlImOJl8iKQNBOXapMDVXBiE6SAo3oWpwtzCzdmyKSskyOTcS8RSGJtFJaTdIJGTpElgkCxD9JQ9c0OkKqSMiu5cgoAoOOrEtgguFwshdNipJ8PR7R8XEnj0ZyBqXUNANQkDowlKU+XjLUdXG8zxLub0ZqycJi0ZJaVoYhtHiyTblM0ytIgO-9kOOkbTpHDCdwHTdbrzbxC3LIJ-CCXJlpcz6X08Da-Bxkk0dObjCiAA */
+        /** @xstate-layout N4IgpgJg5mDOIC5QBUD2FUAICyBDAxgBYCWAdmAHRoayYAyquEZUAtOwMQbkVkBuqANaVqWPETIj0qWgyYt2rBP1T5cAF2KpSAbQAMAXX0HEoAA4zim7aZAAPRAE4KjgGx7HAFgCsngIwAzADsnp4BABwBADQgAJ6IAQF+FN6OAEz+QY5+aUFJrgC+BTGiOAQkPKKyjMykbJxgAE6NqI0UZgA2GgBmrQC2VNJlEpXS1fJ1isqkAmrWuobGthawVlqktg4IaekUfno5nrlh++HeQTHxCPueFK4Zjo7haX77+y9FJUPiFZRyEJAAIQcADCjTAGjAmAAcmAAO5LJAgFZrGxIrZ+VzOVxBPzhcKBI5pVw+S5OAJ6CiePSuALE86vameT4gUo-SQUf5AjgAETAHTA6jAiPMlnmm0Q5woaT0SRpcreOTJ1z0NIoek8kTpOw8bnCLLZ5Q5YIhmjqmHIcMw6mkFAAyoRUHCWJheo0+pgyGYAK7qDgAMX6ntIPvUmCIuDqkBFyLF6wlCACWIoQTOnhJ3iTrkCys8QW8d2est8aXOeQCBu+Rp4Jo0Lst1ttDqdLrdHq9vo4du9ACM+lYYyjxejEO5wilHnTXJmfI9wsrs0EKGdvHpvPjwriCd5Kxhhr8KLWzVALfDGxh7bg+C6bRguNpKCphIM9+ya+C6+aG7fUJfr+af2mWY620YxBzjNFQC2LE0hcVJ803ddfE1BcpT8ddAj8UJZXSRxdzEatKCPeszx-P8b2kDgmhaNpOh6foXwIkYiI-Y9TytMi7SvCiMCA1QQIWIxDGWCCNhHBBp0pNI0mCDUaTnaI4gSV4UjxJ5iRlPVmWKVkq2Yig+QFNifyo5pWnaLp1DbRj9w5QzBR41A+LmdYwOEpEh3jcTWCwgtfC8Lw8zzMdlRyNJx0SRxEl8PxHHOTV8Nsnh7OMyjuEfGYhCkV9CIM-kHIA6RnIEtyTA80SEx86k9iOKKcg8WK1zSUKNQLXIdjLLDZQCHcWVIdA4FsQ1mJE1ZhygxBWBeAI7hCbw8UxAJPDcMJQtuM50KCe5Sz0XFaTSRK32ymR6BqBR2FG1ExImhAjha2CevQ54sNyVJeq+HL9K5CBAUu8b7ElC4lIQKLKUceV6VxLrtI+piDyqTB-VwYgBQgRtTqYP6vJumKXCeAInmzWk3D8ULS2XebzlSLE10XQ7cuIr9SOkLHIIBxMXhTNMMyzHNgek24DnCJ4sOpLEs3p-TGZPb8m0dZ1zTbYNQ1Z672YiJdvHm15Ug8PQHmVRJYLm7x3GCcGsKTSWD2l9jz1-Lj-xPH9VYTTdNcxVcouFurlVSW4etXTdInXVxhetuz8tSjBXe89CZunNMlvdjwtdC-Yl3CbD03OeStoj5Ko5dUoAFEzPBCBY5unzp1mnwFtpZaSUUq5AllFwmueHxhc1XqiiAA */
         schema: {
             services: {} as {
                 'loadTodos': {
@@ -9,18 +9,21 @@ export const todosMachine = createMachine({
                 },
                 'saveTodo': {
                     data: void
+                },
+                'deleteTodo': {
+                    data: void
                 }
             },
-            events: {} as
-                | {
+            events: {} as | {
                 type: 'Create New'
-            }
-                | {
+            } | {
                 type: 'Form input changed'
                 value: string
-            }
-                | {
+            } | {
                 type: 'Submit'
+            } | {
+                type: 'Delete'
+                todo: string
             }
         },
         context: {
@@ -51,7 +54,8 @@ export const todosMachine = createMachine({
 
             "Loaded!": {
                 on: {
-                    "Create New": "Creating new todo"
+                    "Create New": "Creating new todo",
+                    Delete: "Deleting todo"
                 }
             },
 
@@ -86,7 +90,22 @@ export const todosMachine = createMachine({
                 },
 
                 initial: "Showing form input"
-            }
+            },
+
+            "Deleting todo": {
+                invoke: {
+                    src: 'deleteTodo',
+
+                    onError: [{
+                        target: "Deleting Todo Errored",
+                        actions: "assignErrorToContext"
+                    }],
+
+                    onDone: "Todos Loading---"
+                }
+            },
+
+            "Deleting Todo Errored": {}
         },
     },
     {

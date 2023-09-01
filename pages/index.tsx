@@ -25,6 +25,10 @@ export default function Home() {
             },
             saveTodo: async (context, event) => {
                 todos.add(context.createNewTodoFormInput);
+            },
+            deleteTodo: async (context, event) => {
+                throw new Error('Todo ERROR')
+                todos.delete(event.todo)
             }
         }
     });
@@ -33,6 +37,23 @@ export default function Home() {
             <pre>{JSON.stringify(state.value)}</pre>
             <pre>{JSON.stringify(state.context)}</pre>
             <div>
+                {
+                    state.context.todos.map((todo) => (
+                        <div key={todo} style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '10px'
+                        }}>
+                            <p>{todo}</p>
+                            <button
+                                onClick={() => {send({
+                                    type: 'Delete',
+                                    todo: todo,
+                                })}}
+                            >Delete</button>
+                        </div>
+                    ))
+                }
                 {
                     state.matches('Loaded!')
                     && (
