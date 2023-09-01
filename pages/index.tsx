@@ -28,7 +28,7 @@ export default function Home() {
             },
             deleteTodo: async (context, event) => {
                 throw new Error('Todo ERROR')
-                todos.delete(event.todo)
+                // todos.delete(event.todo)
             }
         }
     });
@@ -38,21 +38,30 @@ export default function Home() {
             <pre>{JSON.stringify(state.context)}</pre>
             <div>
                 {
-                    state.context.todos.map((todo) => (
-                        <div key={todo} style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px'
-                        }}>
-                            <p>{todo}</p>
-                            <button
-                                onClick={() => {send({
-                                    type: 'Delete',
-                                    todo: todo,
-                                })}}
-                            >Delete</button>
-                        </div>
-                    ))
+                    state.matches('Loaded!') && (
+                        <>
+                            {
+                                state.context.todos.map((todo) => (
+                                    <div key={todo} style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '10px'
+                                    }}>
+                                        <p>{todo}</p>
+                                        <button
+                                            onClick={() => {
+                                                send({
+                                                    type: 'Delete',
+                                                    todo: todo,
+                                                })
+                                            }}
+                                        >Delete
+                                        </button>
+                                    </div>
+                                ))
+                            }
+                        </>
+                    )
                 }
                 {
                     state.matches('Loaded!')
@@ -63,24 +72,38 @@ export default function Home() {
                     )
                 }
                 {
-                    state.matches('Creating new todo.Showing form input')
-                    &&
-                  <form onSubmit={e => {
-                      e.preventDefault();
-                      send({type: 'Submit'})
-                  }}>
+                    state.matches('Deleting Todo Errored') && (
+                        <>
+                            <p>Something went wrong: {state.context.errorMessage}</p>
+                            <button onClick={() => {
+                                send({
+                                        type: "Speed up"
+                                    }
+                                )
+                            }}>Go Back to list
+                            </button>
+                        </>
+                    )
+                }
+                {
+                    state.matches('Creating new todo.Showing form input') && (
+                        <form onSubmit={e => {
+                            e.preventDefault();
+                            send({type: 'Submit'})
+                        }}>
 
-                    <input
-                      type="text"
-                      onChange={e => {
-                          send({
-                              type: "Form input changed",
-                              value: e.target.value,
-                          })
-                      }}
-                    >
-                    </input>
-                  </form>
+                            <input
+                                type="text"
+                                onChange={e => {
+                                    send({
+                                        type: "Form input changed",
+                                        value: e.target.value,
+                                    })
+                                }}
+                            >
+                            </input>
+                        </form>
+                    )
                 }
             </div>
         </>
